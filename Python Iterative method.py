@@ -27,7 +27,7 @@ while k < N:
 
     # 收敛判断
     if abs(x_value_1 - x_previous_1) < epsilon:
-        print(f"迭代法近似解的值为{x_value_1}，迭代了{k}次")
+        print(f"迭代法近似解的值为{x_value_1:.8f}，迭代了{k}次")
         flag = True
         break
     else:
@@ -76,6 +76,13 @@ x_value_3 = x_init
 k = 1
 flag = False
 x = sympy.symbols("x")
+
+# 预计算函数表达式
+try:
+    expr_3 = sympy.sympify(func)  # 将输入字符串转换为SymPy表达式
+except sympy.SympifyError:
+    print("错误：无效的函数表达式！")
+    exit()
 
 while k < N:
     expr_3 = sympy.sympify(func)
