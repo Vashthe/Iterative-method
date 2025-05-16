@@ -12,6 +12,13 @@ k = 1  # 迭代计数器
 flag = False  # 收敛标志
 x = sympy.symbols("x")  # 定义符号变量x
 
+# 预计算函数表达式
+try:
+    expr_1 = sympy.sympify(func)  # 将输入字符串转换为SymPy表达式
+except sympy.SympifyError:
+    print("错误：无效的函数表达式！")
+    exit()
+
 while k < N:
     expr_1 = sympy.sympify(func)  # 将输入字符串转换为SymPy表达式
     fx = expr_1.subs(x, x_value_1).evalf()  # 计算f(x_k)
@@ -35,6 +42,12 @@ x_value_2 = x_init
 k = 1
 flag = False
 x = sympy.symbols("x")
+
+try:
+    expr_2 = sympy.sympify(func)  # 将输入字符串转换为SymPy表达式
+except sympy.SympifyError:
+    print("错误：无效的函数表达式！")
+    exit()
 
 while k < N:
     expr_2 = sympy.sympify(func)
